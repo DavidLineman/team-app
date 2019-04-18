@@ -1,3 +1,10 @@
-<h1>Here is the Roster</h1>
 
-<h1><%= @player.inspect %></h1>
+
+<div class="container">
+  <h2>Players:</h2>
+    <br>
+    <% @player.each do |player| %>
+      <h3><%= player.first_name  %> <%= player.last_name %></h3>
+      <h5><%= player.position %></h5>
+    <% end %>
+</div>
