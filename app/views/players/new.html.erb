@@ -1,0 +1,13 @@
+
+<div class="container">
+  <h2>Add a Player to the List</h2>
+</div>
+
+<div class="container">
+  <%= simple_form_for @player do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :position %>
+    <%= f.submit 'Add the Player', class: 'btn btn-success' %>
+</div>
+<% end %>
