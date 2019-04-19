@@ -8,6 +8,11 @@ class PlayersController < ApplicationController
     @player = Player.new
   end
 
+  def show
+    @player = Player.find_by_id(params[:id])
+    return render_not_found if @player.blank?
+  end
+
   def create
     @player = Player.create(player_params)
     if @player.invalid?
