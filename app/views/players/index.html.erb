@@ -6,7 +6,7 @@
     <% @player.each do |player| %>
       <div class="name">
         <h3><%= player.first_name  %> <%= player.last_name %></h3>
-        <h6><%= player.position %></h6><button><%= link_to player_path(player), class: "btn btn-primary btn-sm" %></button>
+        <h6><%= player.position %></h6><%= link_to 'Player Info', player_path(player), class: "btn btn-primary btn-sm" %>
       </div>
     <% end %>
 </div>
