@@ -1,12 +1,27 @@
+<script>
+  $(function() {
+    $('.players').sortable({
+      update: function( event, ui ) {
+        alert(ui.item.index());
+      }
+    });
+  });
+
+</script>
 
 
 <div class="container">
   <h2>Players:</h2>
     <br>
-    <% @player.rank(:row_order).each do |player| %>
-      <div class="name">
-        <h3><%= player.first_name  %> <%= player.last_name %></h3>
-        <h6><%= player.position %></h6><%= link_to 'Player Info', player_path(player), class: "btn btn-primary btn-sm" %>
+    <ul>
+      <div class="players">
+        <% @player.rank(:row_order).each do |player| %>
+          <li data-item-id=<%= player.id %>>
+            <h3><%= player.first_name  %> <%= player.last_name %></h3>
+            <h6><%= player.position %></h6><%= link_to 'Player Info', player_path(player), class: "btn btn-primary btn-sm" %>
+          </li>
+        <% end %>
       </div>
-    <% end %>
+    </ul>
 </div>
+
