@@ -2,7 +2,12 @@
   $(function() {
     $('.players').sortable({
       update: function( event, ui ) {
-        alert(ui.item.index());
+        $.ajax({
+          type: 'PUT', 
+          url: ui.item.data('update-url'),
+          dataType: 'json',
+          data: { player: { row_order_position: ui.item.index() } }
+        });
       }
     });
   });
@@ -16,7 +21,7 @@
     <ul>
       <div class="players">
         <% @player.rank(:row_order).each do |player| %>
-          <li data-item-id=<%= player.id %>>
+          <li data-update-url=<%= player_path(player) %>>
             <h3><%= player.first_name  %> <%= player.last_name %></h3>
             <h6><%= player.position %></h6><%= link_to 'Player Info', player_path(player), class: "btn btn-primary btn-sm" %>
           </li>

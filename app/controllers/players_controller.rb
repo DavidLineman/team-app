@@ -21,10 +21,20 @@ class PlayersController < ApplicationController
     redirect_to root_path
   end
 
+  def update
+    current_player.update_attributes(player_params)
+    render plain: 'updated!'
+  end
+
+
   private
 
+  def current_player
+    @player = Player.find(params[:id])
+  end
+
   def player_params
-    params.require(:player).permit(:first_name, :last_name, :position)
+    params.require(:player).permit(:first_name, :last_name, :position, :row_order_position)
   end
 
 
